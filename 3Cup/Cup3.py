@@ -1,4 +1,4 @@
-from Problem import Problem
+from Base.Problem import Problem
 
 
 class Cup3(Problem):
