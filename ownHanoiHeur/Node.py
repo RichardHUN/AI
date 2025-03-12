@@ -1,3 +1,6 @@
+from ownHanoiHeur.SimilarityCalc import SimilarityCalc
+
+
 class Node:
     """Csomópont a kereső fában.
        Tartalmaz egy mutatót a szülőre (a csomópontra, amelynek ez az utódja) és a
@@ -22,21 +25,22 @@ class Node:
     def __repr__(self):
         """Speciális metódus mely az objektum string állapotát definiálja"""
         #return "<Node {}, {}, {}, {}>".format(self.state, self.parent, self.action, self.path_cost)
-        return "<Node {}>".format(self.state)
         """str = "\n"
         for ch in self.state:
             str += "\n" + ch
         return str"""
+        #return "<Node {}>".format(self.state)
+        return "<{}>".format(self.state)
 
     def __lt__(self, node):
         """Speciálist metódus mely definiálja hogy az adott Node objektum
         mikor kisebb e egy másik Node objektumnál"""
-        return self.state < node.state
+        return self.path_cost < node.path_cost
 
     def __eq__(self, other):
         """Speciálist metódus mely definiálja hogy az adott Node objektum
         mikor egyenlő egy másik Node objektummal"""
-        return isinstance(other, Node) and self.state == other.state
+        return isinstance(other, Node) and self.path_cost == other.path_cost and self.state == other.state
 
     def __hash__(self):
         """Speciális metódus mely definiálja hogy egy adott Node objektum
@@ -49,8 +53,8 @@ class Node:
         next_node = Node(state = next_state,
                          parent = self,
                          action = action,
-                         path_cost = problem.path_cost(self.path_cost,
-                                                       self.state, action, next_state))
+                         path_cost = self.path_cost + SimilarityCalc(problem, next_state) )
+        """ + heuristic_calc_second_to_last_used(problem, next_state) ) """
         return next_node
 
     def expand(self, problem):

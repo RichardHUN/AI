@@ -48,7 +48,7 @@ class Hanoi(Problem):
     def result(self, state, action):
         """Operátorok hatásának definiálása"""
 
-        # diks = korong, char = rúd
+        # disk = korong, char = rúd
         disk, char = action
 
         # Előtte és utánna lévő korongok helyeinek összefűzése

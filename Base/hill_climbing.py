@@ -43,10 +43,26 @@ def heuristic_calc_empty_jar(State):
 def heuristic_zero(State):
     return 0
 
-def heuristic_calc_first_not_on_first(State):
+def heuristic_calc_first_not_on_second(State):
     if State == len(State) * "3":
         return 0
     c = 0
-    if State[0] == "1":
-        c += 1
+    if State.find("2") != -1:
+        c += State.count("2")
     return c + 1
+
+"""def heuristic_calc_minimal_poles_used(State):
+    szamok = len(State)-State.count("_")
+    if State.split("_")[-1] == ( i+1 for i in range(szamok) ):
+        return 0
+    c = 0
+    poles = State.split("_")
+    for i in range(len(poles)):
+        #c += len(poles[i]) + ( szamok - i )
+        #c += ( ( szamok - i ) / szamok ) * len( poles[i] )
+        #c += szamok - i + len(poles[i])
+        #c += ( ( szamok - i ) / szamok ) * ( szamok - i + len(poles[i]) )
+    
+
+    return c + 1"""
+
