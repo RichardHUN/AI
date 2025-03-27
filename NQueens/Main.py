@@ -1,5 +1,4 @@
-from Base.Search import breadth_first_tree_search, breadth_first_tree_search_with_stepcount, \
-    depth_first_graph_search_with_stepcount, astar_search, astar_search_with_stepcount, trial_error_with_stepcount
+from Base.Search import *
 from NQueens import NQueens
 
 def sort_by_heur(items):
@@ -9,6 +8,22 @@ def sort_by_heur(items):
 def sort_by_number_of_twos(items):
     return sorted(items, key=lambda x: nrOfX(x.state, 2))
 
+def distinctElems(matrix):
+    distincts = set()
+    for elem in matrix:
+        if elem not in distincts:
+            distincts.add(elem)
+    return distincts
+
+def nrOfSames(matrix):
+    count = 0
+    for elem in distinctElems(matrix):
+        count += nrOfX(matrix, elem)
+    return count
+
+def sort_by_number_of_sames(items):
+    return sorted(items, key=lambda x: nrOfSames(x.state))
+
 def nrOfX(matrix, X):
     count = 0
     for element in matrix:
@@ -17,6 +32,7 @@ def nrOfX(matrix, X):
     return count
 
 nq4 = NQueens(4)
+
 
 limit = 10000
 steps = 0
@@ -38,11 +54,16 @@ print( "Average number of steps needed for trial-error search(", limit, " tries)
 
 b = breadth_first_tree_search_with_stepcount(nq4)
 print( "Number of steps needed for width search: ", b[1],
-       "\nNumber of node discovered by width search: ", b[2], "\n")
+       "\nNumber of nodes discovered by width search: ", b[2], "\n")
 d = depth_first_graph_search_with_stepcount(nq4)
 print( "Number of steps needed for depth search: ", d[1],
-       "\nNumber of node discovered by depth search: ", d[2], "\n")
+       "\nNumber of nodes discovered by depth search: ", d[2], "\n")
 
-a = astar_search_with_stepcount(nq4, sort_by_number_of_twos)
-print( "Number of steps needed for astar search(nrOfTwos heuristic): ", a[1],
-       "\nNumber of node discovered by astar search: ", a[2], "\n")
+a1 = astar_search_with_stepcount(nq4, sort_by_number_of_sames)
+print( "Number of steps needed for astar search(nrOfSames heuristic): ", a1[1],
+       "\nNumber of nodes discovered by astar search: ", a1[2], "\n")
+
+a2 = astar_search_with_stepcount(nq4, sort_by_number_of_twos)
+print( "Number of steps needed for astar search(nrOfTwos heuristic): ", a2[1],
+       "\nNumber of nodes discovered by astar search: ", a2[2], "\n")
+print(a2[0])

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="baf6b464-b966-41a8-b1ac-c317c6cc2884" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NQueens/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/NQueens/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +144,7 @@
       <workItem from="1741292811809" duration="2757000" />
       <workItem from="1741370060440" duration="6937000" />
       <workItem from="1741788385876" duration="15905000" />
-      <workItem from="1743096677447" duration="3736000" />
+      <workItem from="1743096677447" duration="5734000" />
     </task>
     <servers />
   </component>
@@ -175,6 +176,6 @@
     <SUITE FILE_PATH="coverage/AI$hill_climbing.coverage" NAME="hill_climbing Coverage Results" MODIFIED="1741294091476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
     <SUITE FILE_PATH="coverage/AI$NQueens.coverage" NAME="NQueens Coverage Results" MODIFIED="1743097235879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NQueens" />
     <SUITE FILE_PATH="coverage/AI$trial_error.coverage" NAME="trial_error Coverage Results" MODIFIED="1741266511549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
-    <SUITE FILE_PATH="coverage/AI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1743100409477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NQueens" />
+    <SUITE FILE_PATH="coverage/AI$Main.coverage" NAME="Main Coverage Results" MODIFIED="1743102432323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NQueens" />
   </component>
 </project>
