@@ -1,8 +1,3 @@
-import queue
-from tkinter import Listbox
-
-from Base.Node import Node
-from Base.WidthSearch import widthSearch
 from Base.hill_climbing import hill_climbing, heuristic_calc_empty_jar
 from Cup3 import Cup3
 

@@ -1,5 +1,4 @@
 from Base.Problem import Problem
-from Base.WidthSearch import widthSearch
 from ownHanoiHeur.SimilarityCalc import SimilarityCalc
 from ownHanoiHeur.AStar import AStar
 

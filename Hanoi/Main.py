@@ -1,6 +1,4 @@
-from Base.WidthSearch import widthSearch
-from Base.hill_climbing import hill_climbing, heuristic_calc_empty_jar, heuristic_zero, heuristic_calc_first_not_on_second
-from Base.trial_error import trial_error
+from Base.hill_climbing import hill_climbing, heuristic_calc_first_not_on_second
 from Hanoi import Hanoi
 
 h = Hanoi(2)
