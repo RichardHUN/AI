@@ -27,6 +27,7 @@ def breadth_first_tree_search_with_stepcount(problem):
     frontier = deque([Node(problem.initial)])
 
     steps = 0
+    discovered = 0
 
     # Amig nem értük el a határt
     while frontier:
@@ -35,12 +36,13 @@ def breadth_first_tree_search_with_stepcount(problem):
 
         # ha cél állapotban vagyunk akkor vége
         if problem.goal_test(node.state):
-            return node, steps
+            return node, steps, discovered
 
         old_size = len(frontier)
         # A kiemelt elemből az összes új állapot legyártása az operátorok segítségével
         frontier.extend(node.expand(problem))
-        steps += len(frontier) - old_size
+        discovered += len(frontier) - old_size
+        steps += 1
         #print(node.state)
 
 def depth_first_graph_search(problem):
@@ -73,6 +75,7 @@ def depth_first_graph_search_with_stepcount(problem):
     explored = set()
 
     steps = 0
+    discovered = 0
 
     # Amig tudunk mélyebre menni
     while frontier:
@@ -81,7 +84,7 @@ def depth_first_graph_search_with_stepcount(problem):
 
         # ha cél állapotban vagyunk vége
         if problem.goal_test(node.state):
-            return node, steps
+            return node, steps, discovered
 
         # állapot feljegyzése hogy tudjuk hogy már jártunk itt
         explored.add(node.state)
@@ -90,7 +93,8 @@ def depth_first_graph_search_with_stepcount(problem):
         old_size = len(frontier)
         frontier.extend(child for child in node.expand(problem)
                         if child.state not in explored and child not in frontier)
-        steps += len(frontier) - old_size
+        steps += 1
+        discovered += len(frontier) - old_size
         #print(node.state)
 
 def best_first_graph_search(problem, f):
@@ -140,6 +144,7 @@ def best_first_graph_search_with_stepcount(problem, f):
     explored = set()
 
     steps = 0
+    discovered = 0
 
     # amíg találunk elemet
     while frontier:
@@ -148,7 +153,7 @@ def best_first_graph_search_with_stepcount(problem, f):
 
         # ha cél állapotban vagyunk akkor kész
         if problem.goal_test(node.state):
-            return node, steps
+            return node, steps, discovered
 
         # feldolgozott elemek bővítése
         explored.add(node.state)
@@ -159,7 +164,8 @@ def best_first_graph_search_with_stepcount(problem, f):
             old_size = len(frontier)
             if child.state not in explored and child not in frontier:
                 frontier.append(child)
-            steps += len(frontier) - old_size
+            steps += 1
+            discovered += len(frontier) - old_size
 
         # Rendezzük a listát (sort) a heurisztikának megfelelően
         frontier = f(frontier)
@@ -217,24 +223,26 @@ def trial_error_with_stepcount(problem):
     state = Node(problem.initial)
 
     steps = 0
+    discovered = 0
 
     # végtelen ciklus definiálása
     while True:
         # Ha a probléma megoldva akkor leállítjuk a végtelen ciklust
         if problem.goal_test(state.state):
             #print('Got it')
-            return state, steps
+            #print(state.path())
+            return state, steps, discovered
 
         # Az alkalmazható operátorok segítsével
         # gyártsuk le az összes lehetséges utódot
         succesors=state.expand(problem)
-
-        steps += len(succesors)
+        discovered += len(succesors)
 
         # Ha nincs új állapot (utód)
         if len(succesors)==0:
-            return 'Unsolvable'
+            return -1,-1,-1
 
         # random választunk egy újat a legyártott utódok közül
         state=succesors[np.random.randint(0,len(succesors))]
+        steps += 1
         #print(state.state)

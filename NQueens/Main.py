@@ -4,9 +4,15 @@ from NQueens import NQueens
 
 nq4 = NQueens(4)
 
-print( "Number of steps needed for width search: ", breadth_first_tree_search_with_stepcount(nq4)[1] )
-print( "Number of steps needed for depth search: ",depth_first_graph_search_with_stepcount(nq4)[1] )
-print( "Number of steps needed for trial-error search: ", trial_error_with_stepcount(nq4)[1] )
+b = breadth_first_tree_search_with_stepcount(nq4)
+print( "Number of steps needed for width search: ", b[1],
+       "\nNumber of node discovered by width search: ", b[2], "\n")
+d = depth_first_graph_search_with_stepcount(nq4)
+print( "Number of steps needed for depth search: ", d[1],
+       "\nNumber of node discovered by depth search: ", d[2], "\n")
+te = trial_error_with_stepcount(nq4)
+print( "Number of steps needed for trial-error search: ", te[1],
+       "\nNumber of node discovered by trial-error search: ", te[2], "\n")
 
 def sort_by_heur(items):
     """Válasszuk mindig a lehető legnagyobb indexű sort"""
@@ -22,4 +28,6 @@ def nrOfX(matrix, X):
             count +=1
     return count
 
-print( "Number of steps needed for astar search(nrOfTwos heuristic): ", astar_search_with_stepcount(nq4, sort_by_number_of_twos)[1] )
+a = astar_search_with_stepcount(nq4, sort_by_number_of_twos)
+print( "Number of steps needed for astar search(nrOfTwos heuristic): ", a[1],
+       "\nNumber of node discovered by astar search: ", a[2], "\n")
