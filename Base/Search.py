@@ -169,6 +169,7 @@ def best_first_graph_search_with_stepcount(problem, f):
 
         # Rendezzük a listát (sort) a heurisztikának megfelelően
         frontier = f(frontier)
+        #print(frontier)
         #print(node.state)
 
 def astar_search(problem, f=None):

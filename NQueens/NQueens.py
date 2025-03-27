@@ -18,8 +18,13 @@ class NQueens(Problem):
             return []  # Minden oszlop kitöltve;
         else:
             col = state.index(-1)
-            return [row for row in range(self.N)
-                    if not self.conflicted(state, row, col)]
+            return [row for row in range(self.N) #]
+                    if not self.conflicted(state, row, col)] # <- Ez az if
+    """
+    !!!
+    Ha ez az if bent marad, akkor a keresők csak a olyan operátorok közül választanak, melyek nem okoznak sorban konfliktust
+    !!!
+    """
 
     def result(self, state, row):
         """Helyezze a következő királynőt a megadott sorba."""

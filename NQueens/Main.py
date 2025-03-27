@@ -11,7 +11,7 @@ def sort_by_number_of_twos(items):
 def distinctElems(matrix):
     distincts = set()
     for elem in matrix:
-        if elem not in distincts:
+        if elem not in distincts and elem != -1:
             distincts.add(elem)
     return distincts
 
@@ -34,7 +34,7 @@ def nrOfX(matrix, X):
 nq4 = NQueens(4)
 
 
-limit = 10000
+limit = 5
 steps = 0
 discovered = 0
 notFound = 0
@@ -45,9 +45,8 @@ for i in range(limit):
         discovered += te[2]
         continue
     notFound += 1
-avgSteps = steps / ( limit - notFound )
-avgDiscovered = discovered / ( limit - notFound )
-
+avgSteps = steps / max( ( limit - notFound ), 1 )
+avgDiscovered = discovered / max( ( limit - notFound ), 1 )
 print( "Average number of steps needed for trial-error search(", limit, " tries) : ", avgSteps.__int__(),
        "\nAverage number of nodes discovered by trial-error search(", limit, " tries) : ", avgDiscovered.__int__(),
        "\nNumber of times trial-error search didn't find the goal(", limit, " tries) : ", notFound, "\n")
@@ -63,7 +62,9 @@ a1 = astar_search_with_stepcount(nq4, sort_by_number_of_sames)
 print( "Number of steps needed for astar search(nrOfSames heuristic): ", a1[1],
        "\nNumber of nodes discovered by astar search: ", a1[2], "\n")
 
+
+"""Ez valójában egy kicsit lassabb mélységi, mivel minden kereső csak a olyan operátorokat választ, melyek
+nem okoznak sorban ütést, tehát csak a keresztbe-irányt kell vizsgálni, a keresztbe-ütés meg elég ritka"""
 a2 = astar_search_with_stepcount(nq4, sort_by_number_of_twos)
 print( "Number of steps needed for astar search(nrOfTwos heuristic): ", a2[1],
        "\nNumber of nodes discovered by astar search: ", a2[2], "\n")
-print(a2[0])
